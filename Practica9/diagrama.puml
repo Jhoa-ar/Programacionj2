@@ -1,0 +1,33 @@
+@startuml
+
+interface Coloreado {
+    +comoColorear(): String
+}
+
+abstract class Figura {
+    - color: String
+    +set_color(c: String): void
+    +get_color(): String
+    +area(): float
+    +perimetro(): float
+    +__str__(): String
+}
+
+class Cuadrado {
+    - lado: float
+    +area(): float
+    +perimetro(): float
+    +comoColorear(): String
+}
+
+class Circulo {
+    - radio: float
+    +area(): float
+    +perimetro(): float
+}
+
+Figura <|-- Cuadrado
+Figura <|-- Circulo
+Coloreado <|.. Cuadrado
+
+@enduml
