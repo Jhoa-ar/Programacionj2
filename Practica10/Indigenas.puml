@@ -1,0 +1,36 @@
+@startuml indigenas
+class PuebloIndigena {
+  - nombre : String
+  - region : String
+  - contaminantes : String[3]
+  - niveles : float[3]
+  
+  + exigirCompensacion() : void
+  + denunciarContaminacion() : void
+}
+
+class EmpresaMinera {
+  - nombre : String
+  - ubicacion : String
+  - tipoMineral : String
+  - cumpleNormas : boolean
+
+  + crearFondoCompensacion() : void
+  + suspenderOperaciones() : void
+}
+
+class Gobierno {
+  - presidente : String
+  - ministerioResponsable : String
+  - planAmbiental : String
+  - respuesta : String
+
+  + proponerMedidas() : void
+  + investigarContaminacion() : void
+}
+
+PuebloIndigena --> EmpresaMinera : exige compensación
+PuebloIndigena --> Gobierno : denuncia
+EmpresaMinera --> Gobierno : recibe regulaciones
+
+@enduml

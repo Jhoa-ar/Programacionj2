@@ -1,0 +1,36 @@
+@startuml DistribucionPlantas
+
+class Planta {
+    - nombreCientifico: String
+    - tipoSemilla: String
+    - zonasDistribucion: String[]
+    - toleranciaClimatica: String
+
+    + adaptarAClima(clima: String): void
+    + dispersarse(zona: String): void
+}
+
+class CondicionAmbiental {
+    - tipoClima: String
+    - tipoSuelo: String
+    - temperaturaMedia: float
+    - precipitacionAnual: float
+
+    + evaluarCompatibilidad(planta: Planta): boolean
+    + cambiarCondicion(clima: String, suelo: String): void
+}
+
+class BarreraGeografica {
+    - tipoBarrera: String
+    - ubicacion: String
+    - extensionKm: float
+    - dificultadCruce: int
+
+    + impideDispersión(planta: Planta): boolean
+    + registrarCambioGeografico(nuevaUbicacion: String): void
+}
+
+Planta --> CondicionAmbiental : seAdaptaA
+Planta --> BarreraGeografica : esRestringidaPor
+
+@enduml
